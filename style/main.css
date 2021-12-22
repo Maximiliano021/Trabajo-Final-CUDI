@@ -9,3 +9,93 @@
     width:100%;
     height:100%;
 }
+
+function program(){
+    let opcion;
+    //muestro el menu una sola vez
+    menu();
+    let usuario, edad;
+
+    do{
+        opcion = prompt('Opcion: ');
+    
+        switch(opcion){
+            case '1': usuario = valUsuario(); break;
+            case '2': email = valEmail(); break;
+            case '3': edad = valEdad(); break;
+            case '4': mostrarUsuarioEdad(usuario, edad); break;
+            default: break;
+        }
+    }while(opcion != '5');
+
+        return;
+}
+
+program();
+
+
+function menu(){
+    document.write('1. Ingrese nombre de usuario <br>');
+    document.write('2. Ingrese Email <br>' );
+    document.write('3. Ingrese Edad <br>');
+    document.write('4. Mostrar nombre de usuario y edad <br>');
+    document.write('5.Salir <br>');
+}
+
+function valUsuario(){
+    let band=0; //me sirve para verificar si ya paso por esta bandera, si  = 1, entonces quiere decir que ya estoy volviendo a pedir
+    
+    let usuario = prompt('Ingrese nombre de  usuario: ');
+
+    do{
+        if(band===1){   //si intento devuelta, entonces me muestra una leyenda
+            alert('Error, la contraseña debe contener entre 5 y 10 caracteres ');   
+            usuario = prompt('Ingrese nombre de  usuario: ');
+            }        
+        band = 1    //aca le digo que ya estoy intentando denuevo
+    }while(!(usuario.length<10 && usuario.length>5));
+
+        return usuario
+}
+
+function valEmail(){
+    let band=0;
+    
+    let email = prompt('Ingrese nombre email: ');
+
+    do{
+        if (band===1){
+            alert('Error, el email debe tener @');   
+            email = prompt('Ingrese nombre email: ');
+            }        
+        band = 1
+    }while( !(email.includes('@')) );
+
+        return email
+}
+
+function valEdad(){
+    let band=0;
+    
+    let edad = prompt('Ingrese edad: ');
+    edad = parseInt(edad);
+    
+    do{
+        if (band===1){
+            alert('Error, la edad debe ser entre 1 y 100');   
+            edad = prompt('Ingrese edad ');
+            }        
+        band = 1
+    }while( !(edad>1 && edad<100) );
+    
+        return edad;
+}
+
+function mostrarUsuarioEdad(usuario, edad){
+
+    if (usuario != null && edad != null)
+        document.write('<br><li>Nombre de usuario: ' + usuario + '          Edad: ' + edad )
+    else
+        alert('No ha seleccionado todos los datos requeridos para esta informacion');
+}
+
