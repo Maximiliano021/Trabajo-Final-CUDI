@@ -1,0 +1,9 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+.encabezado{
+    background: #FF5959;
+    height:40px;
+}
